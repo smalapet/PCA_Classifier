@@ -1,3 +1,7 @@
+############################
+#Author Sivarat Malapet
+#Using PCA before perform ML
+############################
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -7,7 +11,7 @@ from matplotlib.colors import ListedColormap
 from sklearn.linear_model import LogisticRegression
 from sklearn.decomposition import PCA
 
-def plot_decision_regions(X, y, classifier, resolution=0.02):
+def _plot(X, y, classifier, resolution=0.02):
     # setup marker generator and color map
     markers = ('s', 'x', 'o', '^', 'v')
     colors = ('red', 'blue', 'lightgreen', 'gray', 'cyan')
@@ -45,7 +49,7 @@ lr = LogisticRegression()
 X_train_pca = pca.fit_transform(X_train_std)
 X_test_pca = pca.transform(X_test_std)
 lr.fit(X_train_pca, y_train)
-plot_decision_regions(X_train_pca, y_train, classifier=lr)
+_plot(X_train_pca, y_train, classifier=lr)
 plt.xlabel('PC1')
 plt.ylabel('PC2')
 plt.legend(loc='lower left')
